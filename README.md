@@ -185,7 +185,12 @@ Przykładowy dokument z kolekcji _malopolskie_:
 
 Na konsoli _mongo_ tworzymy GeoJSON _2dsphere_ index:
 ```bash
-db.malopolskie.createIndex( { geometry: "2dsphere" } )
+show collections
+  pomorskie → 89.977MB / 9.785MB
+count docs
+  pomorskie → 366,209 document(s)
+
+db.pomorskie.createIndex( { geometry: "2dsphere" } )
 ```
 
 ## Uwagi
