@@ -158,10 +158,10 @@ się w katalogu _json_: 16 plików, razem 5,119,432,324 bajtów.
 Spakowane programem _gzip_ pliki zajmują 579,741,734 bajtów.
 ```bash
 cd json
-gunzip -c 2018_02_26_08_16_11__12_małopolskie.json.gz | \
-jq --compact-output '{miejscowosc: .properties.miejscowosc, ulica: .properties.ulica, kod_pocztowy: .properties.kodPocztowy, nr: .properties.numerPorzadkowy, czesc_miejscowosci: .properties.czescMiejscowosci, status: .properties.status, geometry, jednostkaAdmnistracyjna: .properties.jednostkaAdmnistracyjna}' | \
-mongoimport --drop -d test -c malopolskie
-# imported 754,175 documents
+gunzip -c 2018_02_26_08_16_11__22_pomorskie.json.gz | \
+jq --compact-output '{place: .properties.miejscowosc, street: .properties.ulica, zip: .properties.kodPocztowy, nr: .properties.numerPorzadkowy, status: .properties.status, geometry, adm: .properties.jednostkaAdmnistracyjna}' | \
+mongoimport --drop -d test -c pomorskie
+# imported 366,209 documents
 ```
 
 TODO: Poprawić _../bin/03_zaladujDane.sh_.
@@ -169,40 +169,24 @@ TODO: Poprawić _../bin/03_zaladujDane.sh_.
 Przykładowy dokument z kolekcji _malopolskie_:
 ```json
 {
-  "_id": ObjectId("5a997da5c709d80576453da5"),
-  "miejscowosc": "Okleśna",
-  "ulica": "Majowa",
-  "kod_pocztowy": "32-566",
-  "nr": "3",
-  "czesc_miejscowosci": null,
+  "_id": ObjectId("5a99953ec709d8057650c383"),
+  "place": "Borzytuchom",
+  "street": "Elizy Orzeszkowej",
+  "zip": "77-141",
+  "nr": "1",
   "status": "istniejacy",
   "geometry": {
     "type": "Point",
-    "coordinates": [
-      19.527343105059337,
-      50.028490970993104
-    ]
+    "coordinates": [ 17.386852875445378, 54.20146201684242 ]
   },
-  "jednostkaAdmnistracyjna": [
-    "Polska",
-    "małopolskie",
-    "chrzanowski",
-    "Alwernia"
-  ]
+  "adm": [ "Polska", "pomorskie", "bytowski", "Borzytuchom" ]
 }
 ```
 
-W konsoli _mongo_ od razu tworzymy GeoJSON _2dsphere_ index:
+Na konsoli _mongo_ tworzymy GeoJSON _2dsphere_ index:
 ```bash
 db.malopolskie.createIndex( { geometry: "2dsphere" } )
-db.malopolskie.createIndex( { miejscowosc: 1 } )
 ```
-
-TODO: PL collation
-```bash
-db.malopolskie.find({}, {_id: 0, miejscowosc: 1}).sort({miejscowosc: 1})
-```
-
 
 ## Uwagi
 
