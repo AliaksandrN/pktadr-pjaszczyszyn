@@ -167,7 +167,7 @@ mongoimport --drop -d test -c pomorskie
 TODO: Poprawić _../bin/03_zaladujDane.sh_.
 
 Przykładowy dokument z kolekcji _malopolskie_:
-```json
+```js
 {
   "_id": ObjectId("5a99953ec709d8057650c383"),
   "place": "Borzytuchom",
