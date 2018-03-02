@@ -16,7 +16,7 @@ pliki=($folderPktAdr/*.xml)
 for plikxml in "${pliki[@]}"
 do
   printf 'Przetwarzanie ogr2ogr: %s\n' "$plikxml"
-  plikjson=$(basename $plikxml).json
+  plikjson=$(basename $plikxml .xml).json
   ogr2ogr -s_srs EPSG:2180 -t_srs EPSG:4326 -lco ENCODING=UTF-8 -f "GeoJSON" \
     -clipsrclayer "PRG_PunktAdresowy" \
     $folderTymczasowy/$plikjson $plikxml -skipfailures
