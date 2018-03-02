@@ -10,6 +10,7 @@ rm -f $folderTymczasowy/*
 rm -f $folder_json/*
 
 shopt -s nullglob
+
 pliki=($folderPktAdr/*.xml)
 # printf '%s\n' "${pliki[@]}"
 
@@ -26,6 +27,8 @@ do
   rm $folderTymczasowy/$plikjson
   numerPliku=$(($numerPliku + 1))
 done
+
+gzip ($folder_json/*.json)
 
 echo "----"
 echo "Przetworzono plików: $numerPliku"

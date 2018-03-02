@@ -151,16 +151,21 @@ Przetwarzanie jq: pktadr/2018_02_26_08_16_11__32_zachodniopomorskie.xml
 
 * [Introduction to Data Wrangling](https://community.trifacta.com/s/online-training)
 
-
 ### 4. Zapisz dane z plików do bazy MongoDB (standalone)
 
 Pliki zawierające JSON-y, jeden JSON w jednym wierszu, powinny znajdować
-się w katalogu _json_.
-
+się w katalogu _json_: 16 plików, razem 5,119,432,324 bajtów.
+Spakowane programem _gzip_ pliki zajmują 579,741,734 bajtów.
 ```bash
 cd json
-../bin/03_zaladujDane.sh
+gunzip -c 2018_02_26_08_16_11__12_małopolskie.json.gz | \
+jq --compact-output '{miejscowosc: .properties.miejscowosc, ulica: .properties.ulica, kod_pocztowy: .properties.kodPocztowy, nr: .properties.numerPorzadkowy, czesc_miejscowosci: .properties.czescMiejscowosci, status: .properties.status, geometry, jednostkaAdmnistracyjna: .properties.jednostkaAdmnistracyjna}' | \
+mongoimport --drop -d test -c malopolskie
+# imported 754,175 documents
 ```
+
+TODO: Poprawić _../bin/03_zaladujDane.sh_.
+
 
 ## Uwagi
 
