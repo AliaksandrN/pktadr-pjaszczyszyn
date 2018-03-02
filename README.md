@@ -3,7 +3,7 @@
 Użyte narzędzia: _jq_ 1.5, _gdal_ 1.11 (dlaczego nie użyto wersji 2.2),
 [instalacja](https://tilemill-project.github.io/tilemill/docs/guides/gdal/).
 
-Na MacOS kończymy instalację dopisując ścieżkę do programów z GDAL
+Na MacOS kończymy instalację programów z GDAL dopisując ścieżkę nich
 do zmiennej _PATH_:
 ```bash
 echo 'export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH' >> ~/.bash_profile
