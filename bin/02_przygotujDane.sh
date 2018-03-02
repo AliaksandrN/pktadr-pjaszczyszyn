@@ -21,8 +21,8 @@ do
     -clipsrclayer "PRG_PunktAdresowy" \
     $folderTymczasowy/$plikjson $plikxml -skipfailures
   printf 'Przetwarzanie jq: %s\n' "$plikxml"
-  jq --compact-output ".features" $folderTymczasowy/$plikjson \
-    > $folderGeojson/$numerPliku.geojson
+  jq --compact-output ".features[]" $folderTymczasowy/$plikjson \
+    > $folderGeojson/$plikjson
   rm $folderTymczasowy/$plikjson
   numerPliku=$(($numerPliku + 1))
 done
