@@ -154,9 +154,11 @@ Przetwarzanie jq: pktadr/2018_02_26_08_16_11__32_zachodniopomorskie.xml
 
 ### 4. Zapisz dane z plików do bazy MongoDB (standalone)
 
-Pliki powinny znajdować się w katalogu _geojson_.
+Pliki zawierające JSON-y, jeden JSON w jednym wierszu, powinny znajdować
+się w katalogu _json_.
 
 ```bash
+cd json
 ../bin/03_zaladujDane.sh
 ```
 
