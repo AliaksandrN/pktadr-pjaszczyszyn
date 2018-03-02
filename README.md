@@ -23,9 +23,9 @@ cd tmp
 Skrypt _../bin/01_pobierzPliki.sh_.
 ```bash
 curl ftp://91.223.135.109/prg/punkty_adresowe.zip -o pktadr.zip
+# ls -oh pktadr.zip
 # 775M pktadr.zip
 unzip punkty_adresowe.zip -d pktadr
-ls -oh pktadr.zip
 rm punkty_adresowe.zip
 ```
 
