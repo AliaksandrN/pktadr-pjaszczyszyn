@@ -14,6 +14,13 @@ source ~/.bash_profile
 
 ### 1. Pobierz plik i rozpakuj do folderu _pktadr_
 
+Przekształacamy dane w katalogu tymczasowym.
+```bash
+mkdir -p tmp
+cd tmp
+```
+
+Skrypt _../bin/01_pobierzPliki.sh_.
 ```bash
 curl ftp://91.223.135.109/prg/punkty_adresowe.zip -o pktadr.zip
 # 775M pktadr.zip
@@ -30,7 +37,7 @@ rm punkty_adresowe.zip
 (w kodowaniu UTF-8).
 
 ```bash
-$ ./02_przygotujDane.sh
+./02_przygotujDane.sh
 ```
 
 Błędy w trakcie zmiany formatu plików.
