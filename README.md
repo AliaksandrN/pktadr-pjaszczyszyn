@@ -33,8 +33,8 @@ rm punkty_adresowe.zip
 
 ### 2. Uruchom skrypt do przygotowania plików GeoJSON
 
-**Uwaga 1:** Zamiast nazwy: _0.mongodb.geojson_ powinno być _dolnośląskie.geojson_
-(w kodowaniu UTF-8).
+**Uwaga 1:** Zamiast nazwy: **0.mongodb.geojson** powinno być
+**2018_02_26_08_16_11__02_dolnośląskie.geojson** (w kodowaniu UTF-8).
 
 **Uwaga 2:** _jq_ powinien wybrać listę JSON–ów.
 
