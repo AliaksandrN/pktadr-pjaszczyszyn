@@ -35,7 +35,7 @@ rm punkty_adresowe.zip
 
 **Uwaga:** _jq_ powinien wybrać listę JSON–ów.
 ```bash
-./02_przygotujDane.sh
+../bin/02_przygotujDane.sh
 ```
 
 Błędy w trakcie zmiany formatu plików.
@@ -58,7 +58,7 @@ ERROR 6: GeoJSON driver doesn't support creating more than one layer
 Pliki powinny znajdować się w katalogu _geojson_.
 
 ```bash
-$ ./03_zaladujDane.sh
+../bin/03_zaladujDane.sh
 ```
 
 ## Uwagi
