@@ -166,6 +166,43 @@ mongoimport --drop -d test -c malopolskie
 
 TODO: Poprawić _../bin/03_zaladujDane.sh_.
 
+Przykładowy dokument z kolekcji _malopolskie_:
+```json
+{
+  "_id": ObjectId("5a997da5c709d80576453da5"),
+  "miejscowosc": "Okleśna",
+  "ulica": "Majowa",
+  "kod_pocztowy": "32-566",
+  "nr": "3",
+  "czesc_miejscowosci": null,
+  "status": "istniejacy",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      19.527343105059337,
+      50.028490970993104
+    ]
+  },
+  "jednostkaAdmnistracyjna": [
+    "Polska",
+    "małopolskie",
+    "chrzanowski",
+    "Alwernia"
+  ]
+}
+```
+
+W konsoli _mongo_ od razu tworzymy GeoJSON _2dsphere_ index:
+```bash
+db.malopolskie.createIndex( { geometry: "2dsphere" } )
+db.malopolskie.createIndex( { miejscowosc: 1 } )
+```
+
+TODO: PL collation
+```bash
+db.malopolskie.find({}, {_id: 0, miejscowosc: 1}).sort({miejscowosc: 1})
+```
+
 
 ## Uwagi
 
