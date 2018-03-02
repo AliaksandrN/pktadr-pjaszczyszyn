@@ -14,7 +14,7 @@ source ~/.bash_profile
 
 ### 1. Pobierz plik i rozpakuj do folderu _pktadr_
 
-Przekształacamy dane w katalogu tymczasowym.
+Dane przekształcamy w katalogu tymczasowym.
 ```bash
 mkdir -p tmp
 cd tmp
