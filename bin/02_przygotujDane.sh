@@ -18,9 +18,9 @@ for plikxml in "${pliki[@]}"
 do
   printf 'Przetwarzanie ogr2ogr: %s\n' "$plikxml"
   plikjson=$(basename $plikxml .xml).json
-  ogr2ogr -s_srs EPSG:2180 -t_srs EPSG:4326 -lco ENCODING=UTF-8 -f "GeoJSON" \
-    -clipsrclayer "PRG_PunktAdresowy" \
-    $folderTymczasowy/$plikjson $plikxml -skipfailures
+  ogr2ogr -skipfailures -s_srs EPSG:2180 -t_srs EPSG:4326 -lco ENCODING=UTF-8 -f "GeoJSON" \
+    -sql "select * from PRG_PunktAdresowy" \
+    $folderTymczasowy/$plikjson $plikxml 
   printf 'Przetwarzanie jq: %s\n' "$plikxml"
   jq --compact-output ".features[]" $folderTymczasowy/$plikjson \
     > $folder_json/$plikjson
@@ -28,7 +28,7 @@ do
   numerPliku=$(($numerPliku + 1))
 done
 
-gzip ($folder_json/*.json)
+gzip $folder_json/*.json
 
 echo "----"
 echo "Przetworzono plików: $numerPliku"
