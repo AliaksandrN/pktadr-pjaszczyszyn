@@ -56,7 +56,15 @@ Spakowane programem _gzip_ pliki zajmują 579,741,734 bajtów.
 ```bash
 cd json
 gunzip -c 2018_02_26_08_16_11__22_pomorskie.json.gz | \
-jq --compact-output '{place: .properties.miejscowosc, street: .properties.ulica, zip: .properties.kodPocztowy, nr: .properties.numerPorzadkowy, status: .properties.status, geometry, adm: .properties.jednostkaAdmnistracyjna}' | \
+jq --compact-output '{
+  place: .properties.miejscowosc,
+  street: .properties.ulica,
+  zip: .properties.kodPocztowy,
+  nr: .properties.numerPorzadkowy,
+  status: .properties.status,
+  geometry,
+  adm_unit: .properties.jednostkaAdmnistracyjna
+}' | \
 mongoimport --drop -d test -c pomorskie
 # imported 366,209 documents
 ```
