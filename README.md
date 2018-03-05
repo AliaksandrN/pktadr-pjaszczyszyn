@@ -1,7 +1,8 @@
 ## Przygotowanie punktów adresowych z terenu Polski w formacie JSON (CSV?)
 
-Użyte narzędzia: _jq_ 1.5, _gdal_ 2.2, gzip
-[instalacja](https://tilemill-project.github.io/tilemill/docs/guides/gdal/).
+Użyte narzędzia: _jq_ 1.5, _gdal_ 2.2
+([instalacja](https://tilemill-project.github.io/tilemill/docs/guides/gdal/)),
+gzip.
 
 Na MacOS kończymy instalację programów z GDAL dopisując ścieżkę nich
 do zmiennej _PATH_:

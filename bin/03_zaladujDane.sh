@@ -6,11 +6,11 @@ folderGeojson="geojson"
 
 shopt -s nullglob
 
-pliki=($folderGeojson/*.geojson)
-# printf '%s\n' "${pliki[@]}"
+pliki=($folderGeojson/*.json.gz)
 
 for plik in "${pliki[@]}"
 do
     printf 'Import danych z pliku: %s\n' "$plik"
-    mongoimport --db $nazwaBazy --collection $nazwaKolekcji --jsonArray --file $plik
+    gunzip -c $plik \
+    | mongoimport --db=$nazwaBazy --collection=$nazwaKolekcji
 done
