@@ -60,11 +60,11 @@ gunzip -c 2018_02_26_08_16_11__22_pomorskie.json.gz | \
 jq --compact-output '{
   place: .properties.miejscowosc,
   street: .properties.ulica,
-  zip: .properties.kodPocztowy,
+  zipcode: .properties.kodPocztowy,
   nr: .properties.numerPorzadkowy,
   status: .properties.status,
   geometry,
-  adm_unit: .properties.jednostkaAdmnistracyjna
+  admunit: .properties.jednostkaAdmnistracyjna
 }' | \
 mongoimport --drop -d test -c pomorskie
 # imported 366,209 documents
@@ -78,14 +78,14 @@ Przykładowy dokument z kolekcji _malopolskie_:
   "_id": ObjectId("5a99953ec709d8057650c383"),
   "place": "Borzytuchom",
   "street": "Elizy Orzeszkowej",
-  "zip": "77-141",
+  "zipcode": "77-141",
   "nr": "1",
   "status": "istniejacy",
   "geometry": {
     "type": "Point",
     "coordinates": [ 17.386852875445378, 54.20146201684242 ]
   },
-  "adm": [ "Polska", "pomorskie", "bytowski", "Borzytuchom" ]
+  "admunit": [ "Polska", "pomorskie", "bytowski", "Borzytuchom" ]
 }
 ```
 
