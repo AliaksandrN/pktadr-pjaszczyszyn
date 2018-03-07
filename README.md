@@ -54,6 +54,8 @@ rm punkty_adresowe.zip
 Pliki zawierające JSON-y, jeden JSON w jednym wierszu, powinny znajdować
 się w katalogu _json_: 16 plików, razem 5,119,432,324 bajtów.
 Spakowane programem _gzip_ pliki zajmują 579,741,734 bajtów.
+Struktura nazwy pliku: rok_miesiąc_dzień_godzina_minuta_sekunda__NumerTerytWojewództwa_nazwaWojewództwa.json
+[Baza TERYT](http://eteryt.stat.gov.pl/eTeryt/rejestr_teryt/udostepnianie_danych/baza_teryt/uzytkownicy_indywidualni/przegladanie/przegladanie.aspx?contrast=default)
 ```bash
 cd json
 gunzip -c 2018_02_26_08_16_11__22_pomorskie.json.gz | \
