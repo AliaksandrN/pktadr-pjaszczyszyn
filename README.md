@@ -61,8 +61,6 @@ mongoimport --drop -d test -c pomorskie
 # imported 366,209 documents
 ```
 
-TODO: Poprawić _../bin/03_zaladujDane.sh_.
-
 Przykładowy dokument z kolekcji _malopolskie_:
 ```js
 {
