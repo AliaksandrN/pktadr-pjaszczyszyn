@@ -7,7 +7,6 @@ folder_json="json"
 shopt -s nullglob
 
 pliki=($folder_json/*.json.gz)
-# printf '%s\n' "${pliki[@]}"
 
 mongo $nazwaBazy --eval "db.$nazwaKolekcji.drop()"
 
