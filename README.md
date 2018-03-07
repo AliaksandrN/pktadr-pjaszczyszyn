@@ -1,4 +1,4 @@
-## Przygotowanie punktów adresowych z terenu Polski w formacie JSON (CSV?)
+## Przygotowanie punktów adresowych z terenu Polski w formacie JSON
 
 Użyte narzędzia: _jq_ 1.5, _gdal_ 2.2
 ([instalacja](https://tilemill-project.github.io/tilemill/docs/guides/gdal/)),
@@ -34,30 +34,19 @@ rm punkty_adresowe.zip
 
 ### 2. Uruchom skrypt do przygotowania plików GeoJSON
 
-**Uwaga:** _jq_ powinien wybrać listę JSON–ów.
 ```bash
 ../bin/02_przygotujDane.sh
 ```
 
-<!--
-### Pliki GeoJSON gotowe do załadowania do MongoDB
-
-* [Punkty adresowe](https://drive.google.com/file/d/1c76CsnoARrlPwRoOsInwhvXnYVPWgiZx/view?usp=sharing) w formacie geojson(bez nagłówka) z dnia 19.02.2018
--->
-
-### 3. Clean up data with Trifacta Wrangler
-
-* [Introduction to Data Wrangling](https://community.trifacta.com/s/online-training)
-
-### 4. Zapisz dane z plików do bazy MongoDB (standalone)
+### 3. Zapisz dane z plików do bazy MongoDB (standalone)
 
 Pliki zawierające JSON-y, jeden JSON w jednym wierszu, powinny znajdować
 się w katalogu _json_: 16 plików, razem 5,119,432,324 bajtów.
 Spakowane programem _gzip_ pliki zajmują 579,741,734 bajtów.
 
-Struktura nazwy pliku: rok_miesiąc_dzień_godzina_minuta_sekunda__NumerTerytWojewództwa_nazwaWojewództwa.json
+Struktura nazwy pliku: `rok_miesiąc_dzień_godzina_minuta_sekunda__NumerTerytWojewództwa_nazwaWojewództwa.json`.
+Link do bazy [TERYT](http://eteryt.stat.gov.pl/eTeryt/rejestr_teryt/udostepnianie_danych/baza_teryt/uzytkownicy_indywidualni/przegladanie/przegladanie.aspx?contrast=default).
 
-[Baza TERYT](http://eteryt.stat.gov.pl/eTeryt/rejestr_teryt/udostepnianie_danych/baza_teryt/uzytkownicy_indywidualni/przegladanie/przegladanie.aspx?contrast=default)
 ```bash
 cd json
 gunzip -c 2018_02_26_08_16_11__22_pomorskie.json.gz | \
@@ -74,7 +63,7 @@ mongoimport --drop -d test -c pomorskie
 # imported 366,209 documents
 ```
 
-Przykładowy dokument z kolekcji _malopolskie_:
+Przykładowy dokument z kolekcji _pomorskie_:
 ```js
 {
   "_id": ObjectId("5a99953ec709d8057650c383"),
