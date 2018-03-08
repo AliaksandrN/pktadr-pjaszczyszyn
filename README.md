@@ -11,7 +11,11 @@ echo 'export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH' >> ~/.bash_
 source ~/.bash_profile
 ```
 
+
 ## Data Wrangling / Obróbka danych
+
+Źródło danych: [www.gugik.gov.pl](http://www.gugik.gov.pl/geodezja-i-kartografia/pzgik/dane-bez-oplat/dane-z-panstwowego-rejestru-granic-i-powierzchni-jednostek-podzialow-terytorialnych-kraju-prg).
+
 
 ### 1. Pobierz plik i rozpakuj do folderu _pktadr_
 
@@ -32,11 +36,13 @@ rm punkty_adresowe.zip
 
 **Uwaga:** Nazwy plików w paczce mogą mieć niestandardowe znaki, więc w razie błędów należy je rozpakować odpowiednim narzędziem.
 
+
 ### 2. Uruchom skrypt do przygotowania plików GeoJSON
 
 ```bash
 ../bin/02_przygotujDane.sh
 ```
+
 
 ### 3. Zapisz dane z plików do bazy MongoDB (standalone)
 
@@ -92,6 +98,7 @@ count docs
 
 db.pomorskie.createIndex( { geometry: "2dsphere" } )
 ```
+
 
 ## Uwagi
 
